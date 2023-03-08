@@ -5,8 +5,7 @@ import { ActivityIndicator } from 'react-native';
 import { ThemeProvider } from 'styled-components/native';
 import { useFonts, Inter_400Regular, Inter_700Bold,} from '@expo-google-fonts/inter';
 
-import { Home } from './src/screens/home';
-
+import { Home } from './src/screens/home/index_da_Home'
 import theme from './theme';
 
 
@@ -22,7 +21,7 @@ export default function App() {
       />
 
       <ThemeProvider theme={theme}>
-        { fontsLoaded ? <Home /> : <ActivityIndicator /> }  
+        { fontsLoaded ? <Home completed={false} /> : <ActivityIndicator /> }  
       </ThemeProvider>
       
     </>
