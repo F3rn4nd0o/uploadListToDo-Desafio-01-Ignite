@@ -27,6 +27,7 @@ import { Tasks } from "../../components/Tasks/taskindex";
 import LogoIgnite from "../../../assets/LogoIgnite.svg";
 import ImgButtons from "../../../assets/ImgButton.svg";
 import ClipBoard from "../../../assets/ClipBoard.svg";
+import Checked from "../../../assets/Checked.svg";
 
 export interface ITask {
   name: string;
@@ -38,12 +39,12 @@ type Props = {
 };
 
 export function Home({completed}:Props) {
-  const [tasks, setTasks] = useState<|ITask[]>([]);
+  const [tasks, setTasks] = useState<ITask[]>([]);
   const [tasksname, setTasksName] = useState("");
-  let [ischecked, setChecked] = useState(completed);
 
   const TasksCounter = tasks.length;
-  const CompletedTasks = tasks.filter((item) => item.completed === true).length;
+  let CompletedTasks = tasks.filter((item) => item.completed === true).length;
+  let CompletedCheck = tasks.filter((item) => item.completed).length;
 
   function handleTaskAdd() {
     const sameName = tasks.filter((item) => item.name === tasksname);
@@ -68,6 +69,7 @@ export function Home({completed}:Props) {
     newState[findIndex].completed = true;
     setTasks(newState);
   }
+
 
   function handleTaskRemove(name: string) {
     Alert.alert("Remover", `Deseja remover a tarefa ?`, [
@@ -142,7 +144,7 @@ export function Home({completed}:Props) {
                 key={item.name}
                 name={item.name}
                 onRemove={() => handleTaskRemove(item.name)}
-                handleSetCompleted={() => handleSetCompleted(item.name)} completed={false}              />
+                handleSetCompleted={() => handleSetCompleted(item.name)} completed={false}/>
             )}
             showsVerticalScrollIndicator={false}
             ListEmptyComponent={() => (
@@ -169,4 +171,8 @@ export function Home({completed}:Props) {
   );
 }
 
+
+function a() {
+  throw new Error("Function not implemented.");
+}
 
