@@ -7,7 +7,7 @@ import { TextTask } from "./styles";
 import { ButtonTask } from "./styles";
 
 import RemoveImg from "../../../assets/RemoveImg.svg";
-import { ITask } from "../../screens/home/index_da_Home";
+import Checked from "../../../assets/Cheked.svg"
 
 
 type Props = {
@@ -23,24 +23,21 @@ export function Tasks({
   completed,
   handleSetCompleted,
 }: Props) {
-  //const [ischecked, setChecked] = useState(completed);
+  const [ischecked, setChecked] = useState(false);
   
 
   return (
     <View style={styles.container}>
       <View style={styles.form}>
         <View>
-          <Checkbox
-            style={{
-              borderRadius: 10,
-              borderColor: "#4EA8DE",
-              width: 17.45,
-              height: 17.45,
-            }}
-            color={completed ? "#5E60CE" : undefined}
-            value={completed}
-            onValueChange={()=> handleSetCompleted(name)}
-          />
+            <Checkbox
+            style={{borderRadius: 10, 
+            borderColor: '#4EA8DE',
+            width: 17.45, 
+            height: 17.45, }}
+            color={ischecked? '#5E60CE': undefined}
+            value={ischecked} 
+            onValueChange={ischecked ? () => handleSetCompleted(name) : setChecked}/>
         </View>
 
         <TextTask style={styles.tasks}>{name}</TextTask>
